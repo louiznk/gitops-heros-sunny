@@ -1,0 +1,88 @@
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: traefik-ingress-controller
+  namespace: kube-system
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  namespace: kube-system
+  name: traefik-ingress-controller
+  labels:
+    app: traefik-ingress-controller
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: traefik-ingress-controller
+  template:
+    metadata:
+      labels:
+        app: traefik-ingress-controller
+    spec:
+      tolerations:
+        - key: node-role.kubernetes.io/master
+          effect: NoSchedule
+      serviceAccountName: traefik-ingress-controller
+      terminationGracePeriodSeconds: 60
+      containers:
+      - image: traefik:v2.5
+        name: traefik-ingress-lb
+        args:
+          - --api
+          - --api.dashboard
+          - --accesslog
+          - --entrypoints.web.address=:80
+          - --entrypoints.websecure.address=:443
+          # - --entrypoints.ssh.address=:22
+          - --log.level=info
+          - --providers.kubernetescrd
+          - --providers.file.filename=/etc/traefik/custom_conf.yml
+          - --providers.kubernetesingress
+          - --providers.kubernetesingress.ingressendpoint.publishedservice=kube-system/traefik-ingress-controller
+        ports:
+          # - name: ssh
+          #   containerPort: 22
+          - name: web
+            containerPort: 80
+          - name: websecure
+            containerPort: 443
+        resources:
+          limits:
+            cpu: "1"
+            memory: "256Mi"
+          requests:
+            cpu: "1"
+            memory: "256Mi"
+        volumeMounts:
+          - name: config-volume
+            mountPath: /etc/traefik
+      volumes:
+        - name: config-volume
+          configMap:
+            name: traefik-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: kube-system
+  name: traefik-ingress-controller
+spec:
+  ports:
+    - name: web
+      port: 80
+      # protocol: TCP
+      # targetPort: 80
+    - name: websecure
+      port: 443
+      # protocol: TCP
+      # targetPort: 443
+    # - name: ssh
+    #   port: 22
+    #   protocol: TCP
+    #   # targetPort: 22
+  selector:
+    app: traefik-ingress-controller
+  type: LoadBalancer

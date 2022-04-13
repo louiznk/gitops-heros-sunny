@@ -1,0 +1,16 @@
+mirrors:
+  "docker.io":
+    endpoint:
+    - http://registry.local.lan:5000
+  "gcr.io":
+    endpoint:
+    - http://registry.local.lan:5001
+  "k8s.gcr.io":
+    endpoint:
+    - http://registry.local.lan:5002
+  "registry.gitlab.com":
+    endpoint:
+    - http://registry.local.lan:5003
+  "registry:5004":
+    endpoint:
+    - http://registry.local.lan:5004

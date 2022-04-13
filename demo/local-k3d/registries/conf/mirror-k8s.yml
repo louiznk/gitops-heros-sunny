@@ -1,0 +1,24 @@
+version: 0.1
+log:
+  fields:
+    service: registry
+storage:
+  cache:
+    blobdescriptor: inmemory
+  filesystem:
+    rootdirectory: /var/lib/registry/k8s
+http:
+  addr: :5002
+  headers:
+    X-Content-Type-Options: [nosniff]
+#auth:
+#  htpasswd:
+#    realm: basic-realm
+#    path: /etc/registry
+health:
+  storagedriver:
+    enabled: true
+    interval: 10s
+    threshold: 3
+proxy:
+  remoteurl: https://k8s.gcr.io

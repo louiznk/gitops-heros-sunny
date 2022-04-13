@@ -1,0 +1,39 @@
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: hello
+  namespace: 01-static-yaml
+  labels:
+    app: hello
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: hello
+  template:
+    metadata:
+      labels:
+        app: hello
+    spec:
+      containers:
+        - name: hello
+          image: louiznk/helloworld-go:1.0
+          ports:
+            - name: web
+              containerPort: 8080
+          resources:
+            limits:
+              cpu: "1"
+              memory: "16Mi"
+            requests:
+              cpu: "0.2"
+              memory: "8Mi"
+          livenessProbe:
+            httpGet:
+              path: /
+              port: web
+          readinessProbe:
+            httpGet:
+              path: /
+              port: web

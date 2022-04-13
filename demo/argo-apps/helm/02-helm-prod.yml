@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: helm-prod
+  namespace: argocd
+spec:
+  destination:
+    namespace: helm-prod
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: 02-helm
+    repoURL: 'https://github.com/louiznk/deploy-sith.git'
+    targetRevision: main
+    helm:
+      valueFiles:
+        - values.yaml
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

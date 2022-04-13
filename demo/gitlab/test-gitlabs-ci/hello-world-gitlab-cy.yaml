@@ -1,0 +1,12 @@
+stages: 
+- hello 
+- man
+
+yo: 
+  stage: hello 
+  script: echo "👋 hello 🌍 from Default"
+
+gourth:
+  stage: man 
+  image: alpine:latest
+  script: echo "👋 olleh 🌍 from Alpine"

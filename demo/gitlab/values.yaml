@@ -1,0 +1,39 @@
+## REQUIRED VALUES
+gitlabUrl: "https://gitlab.com/"
+runnerRegistrationToken: "neMeVersionnerPas"
+
+## Configure the maximum number of concurrent jobs
+## - Documentation: https://docs.gitlab.com/runner/configuration/advanced-configuration.html#the-global-section
+## - Default value: 10
+## - Currently don't support auto-scaling.
+concurrent: 4
+
+## Defines in seconds how often to check GitLab for a new builds
+## - Documentation: https://docs.gitlab.com/runner/configuration/advanced-configuration.html#the-global-section
+## - Default value: 3
+checkInterval: 3
+
+## For RBAC support
+rbac:
+  create: true
+  clusterWideAccess: false
+
+## Configuration for the Pods that that the runner launches for each new job
+runners:
+  image: ubuntu:20.04
+  builds: {}
+  services: {}
+  helpers: {}
+
+  ## Specify the tags associated with the runner. Comma-separated list of tags.
+  ## - Documentation: https://docs.gitlab.com/ce/ci/runners/#using-tags
+  tags: kubernetes,cluster
+  runUntagged: true
+
+  ## Run all containers with the privileged flag enabled
+  ## This will allow the docker:dind image to run if you need to run Docker
+  ## commands. Please read the docs before turning this on:
+  ## - Documentation: https://docs.gitlab.com/runner/executors/kubernetes.html#using-docker-dind
+  privileged: true
+resources: {}
+

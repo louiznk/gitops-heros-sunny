@@ -1,0 +1,37 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: hello-world
+  namespace: argocd
+spec:
+  project: default 
+  destination:
+    namespace: test
+    server: https://kubernetes.default.svc
+  source:        
+    path: 01-static-yaml
+    repoURL: https://github.com/louiznk/deploy-sith.git
+    targetRevision: main
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true 
+    syncOptions:
+    - CreateNamespace=true 
+#---
+## exemple def project 
+# apiVersion: argoproj.io/v1alpha1
+# kind: AppProject
+# metadata:
+#   name: new-project
+#   namespace: argocd
+# spec:
+#   clusterResourceWhitelist:
+#   - group: '*'
+#     kind: '*'
+#   destinations:
+#   - namespace: '*'
+#     server: '*'
+#   sourceRepos:
+#   - '*'

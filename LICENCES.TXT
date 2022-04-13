@@ -1,0 +1,20 @@
+Le contenue de la presentation est en licence GNU GENERAL PUBLIC LICENSE
+
+Le systeme de templating est l'excellent reveal.js, plus de d'information d'usage et de licence https://revealjs.com/
+
+Concernant les images, elles proviennent de :
+- jdr.png : Battle For Wesnoth <3
+- argcd_architecture.pnb : Argo CD
+- 404.png : ?
+- richarchson-kubecon-2.png : kubecon 2019?
+- taro-divinatoire.png : ?
+- tavern.pnb : ?
+- twitter.png : twitter
+- gitops-ring.png : ?
+- secret.png : ?
+- balrog.png : Warner Bros (https://www.warnerbros.com/movies/lord-rings-fellowship-ring) et ou New Line Cinema
+- erebor.pnb : Kornus6 https://twitter.com/Kornux6
+- frodo-in-rivendell.png : Warner Bros et ou New Line Cinema
+- louis.png : Zenika
+- des.png : Louis Tounayre (libre de droits)
+- google.png : Louis Tournayre (libre de droits)
