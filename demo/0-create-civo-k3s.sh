@@ -1,1 +1,0 @@
-civo-k3s/01-create-cluster.sh

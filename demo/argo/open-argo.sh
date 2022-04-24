@@ -20,4 +20,4 @@ then
     fi
 fi
 
-chromium https://argocd.$IP.sslip.io > /dev/null
+flatpak run org.chromium.Chromium --incognito https://argocd.$IP.sslip.io 2>/dev/null &

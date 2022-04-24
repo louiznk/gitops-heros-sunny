@@ -2,6 +2,8 @@ Le contenue de la presentation est en licence GNU GENERAL PUBLIC LICENSE
 
 Le systeme de templating est l'excellent reveal.js, plus de d'information d'usage et de licence https://revealjs.com/
 
+Le mode "demo" est fait avec demo-magic : github.com:paxtonhare/demo-magic.git
+
 Concernant les images, elles proviennent de :
 - jdr.png : Battle For Wesnoth <3
 - argcd_architecture.pnb : Argo CD
@@ -15,6 +17,6 @@ Concernant les images, elles proviennent de :
 - balrog.png : Warner Bros (https://www.warnerbros.com/movies/lord-rings-fellowship-ring) et ou New Line Cinema
 - erebor.pnb : Kornus6 https://twitter.com/Kornux6
 - frodo-in-rivendell.png : Warner Bros et ou New Line Cinema
-- louis.png : Zenika
+- louis.png : Louis Tounayre (libre de droits)
 - des.png : Louis Tounayre (libre de droits)
 - google.png : Louis Tournayre (libre de droits)

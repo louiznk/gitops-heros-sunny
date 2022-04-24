@@ -5,7 +5,7 @@ pushd $DIR
 
 echo "****************************************************************************************************"
 echo "Before you need to manually install k3d, kubectl and helm (we assume you have docker and git)"
-echo "First install k3d v3.0.0"
+echo "First install k3d v4.4.8"
 echo "curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh | TAG=v3.3.0 bash"
 echo "----------------------------------------------------------------------------------------------------"
 echo "And then install kubect"
@@ -50,7 +50,7 @@ k3d cluster create "${clustername}" --port "80:80@server[0]" --port "443:443@ser
 --k3s-agent-arg  '--kubelet-arg=eviction-hard=imagefs.available<1%,nodefs.available<1%' --k3s-agent-arg  '--kubelet-arg=eviction-minimum-reclaim=imagefs.available=1%,nodefs.available=1%' \
 --no-lb ${REGISTRY} \
 --volume "$HOME/srv/k3d/${clustername}/default:/opt/local-path-provisioner/default" \
---image rancher/k3s:v1.20.10-k3s1 \
+--image "rancher/k3s:v1.21.11-k3s1" \
 --wait
 
 export KUBECONFIG="$(k3d kubeconfig merge ${clustername})"

@@ -1,3 +1,4 @@
+---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -12,11 +13,6 @@ spec:
     path: 02-kustomize/overlays/staging
     repoURL: https://github.com/louiznk/deploy-sith.git
     targetRevision: main
-    # plugin:
-    #   name: "environment"
-    #   env:
-    #     - name: TEST
-    #       value: test
   syncPolicy:
     automated:
       prune: true
