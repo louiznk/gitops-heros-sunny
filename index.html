@@ -546,15 +546,16 @@
 						<h3>Votre première mission</h3>
 						<br />
 						<ul>
-							<li>Installer et configurer un runner GitLab pour dans le cluster</li>
+							<li>Installer et configurer un runner GitLab (pour le "groupe" gitlab) pour dans le cluster</li>
 							<li>S'assurer que le runner fonctionne</li>
-							<li>Permettre au runner de piloter le cluster k8s</li>
+							<li>Permettre au runner de piloter le cluster k8s (via </li>
 						</ul><br />
 						<br />
-						<a href="javascript:void(0)" onclick="resolveAndGo('#/13', 1, 1)">Après avoir PARTIELEMENT cette issue, passer à la prochaine</a>
+						<a href="javascript:void(0)" onclick="resolveAndGo('#/13', 1, 1)">Après avoir PARTIELLEMENT cette issue, passer à la prochaine</a>
 					
 						<aside class="notes">
-							Pour la démo tout sera fait en local et l'on aura un seul cluster kube qui hébergera GitLab et les déployements.
+							Le runner pourra lancer des jobs en injectant le kubeconfig local qui lui permettra d'accèder à l'API server de kube.  
+							Pour la démo tout sera fait en local et l'on aura un seul cluster kube qui hébergera GitLab et les déployements.  
 							C'est une solution à moitié faite, il manque la boucle de controle
 						</aside>
 					</section>
