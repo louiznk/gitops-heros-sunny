@@ -10,8 +10,11 @@ pushd $DIR
 echo "Get public cert for sealing secret"
 
 echo "📦 Save public cert in ${txtblu}$(pwd)/public-cert.pem${txtrst}"
+
+# si pb pour fetch le certif => le certif est dans un secret kube
+#kubectl get secret -n kube-system -l sealedsecrets.bitnami.com/sealed-secrets-key -o jsonpath="{.items[0].data['tls\.crt']}" | base64 -d > public-cert.pem 
 set -x
-kubectl get secret -n kube-system -l sealedsecrets.bitnami.com/sealed-secrets-key -o jsonpath="{.items[0].data['tls\.crt']}" | base64 -d > public-cert.pem 
+kubeseal --fetch-cert > public-cert.pem
 
 { set +x; } 2> /dev/null # silently disable xtrace
 popd

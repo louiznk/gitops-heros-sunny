@@ -27,6 +27,6 @@ while [ "" == "$(kubectl get secret -n kube-system -l sealedsecrets.bitnami.com/
 echo " ✅"
 
 prompt "📦 - Save public cert in ${txtblu}$(pwd)/public-cert.pem${txtrst}"
-pe "kubectl get secret -n kube-system -l sealedsecrets.bitnami.com/sealed-secrets-key -o jsonpath=\"{.items[0].data['tls\.crt']}\" | base64 -d > public-cert.pem"
+pe "kubeseal --fetch-cert > public-cert.pem"
 
 popd

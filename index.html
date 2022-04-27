@@ -105,6 +105,20 @@
 				color: rgb(250, 250, 250);
 				font-size: 1.1em;
 			}
+			.red {
+				color: red
+			}
+			.blue {
+				color: blue
+			}
+			.white {
+				color: white
+			}
+			.shell {
+				font-family: monospace;
+				font-size: 0.8em;
+				color: beige;
+			}
 		</style>
 	</head>
 	<body>
@@ -125,7 +139,7 @@
 					<br />
 					<br />
 					<p class="small">
-					Revue des lecteurs sur //FIXME <!-- openfeedback -->
+					Revue des lecteurs sur https://bit.ly/tz-gitops<!-- openfeedback -->
 					</p>
 					<aside class="notes">
 						
@@ -272,7 +286,7 @@
 					<section>
 						<!-- TODO GDG Lille  -->
 						<h3>Une présentation de Legolas sur GitOps à un petit meetup</h3>
-						Malheureusement vous arrivez vers la fin de la présentation de Legolas, vous pouvez <a href="#/5/1">discuter d'abord avec lui (A)</a> ou <a href="#/9">aller directement au moment d'échange post meetup (B)</a>
+						Malheureusement vous arrivez vers la fin de la présentation de Legolas, vous pouvez <a href="#/5/1">discuter d'abord avec lui (A)</a> ou <a href="#/10">aller directement au moment d'échange post meetup (B)</a>
 						<aside class="notes">
 							Il vous pose quelques questions pour vous aider à comprendre GitOps
 						</aside>
@@ -314,14 +328,14 @@
 				<!-- 6 -->
 				<section data-background-image="images/richardson-kubecon-2.png" data-background-size="60%">
 					<section>
-						<h3>Quelles sont les 2 principes fondamentaux de GitOps ?</h3>
+						<h3>Quelles sont les 2 premiers principes GitOps ?</h3>
 						<p>
 							<ul>
 								<li><a href="#/6/1">A: Le principe, c'est de faire des valeurs</a></li>
 								<li><a href="#/6/1">B: On ne passe les commandes Git qu'en ligne de commande</a></li>
 								<li><a href="javascript:void(0)" onclick="resolveAndGo('#/6/2', 1, 1)">C: Git est la seul source de vérité</a></li>
 								<li><a href="#/6/1">D: Chaque branche Git correspond à un environnement différent</a></li>
-								<li><a href="javascript:void(0)" onclick="resolveAndGo('#/6/3', 1, 1)">E: Tout est décrit via du code versionné</a></li>
+								<li><a href="javascript:void(0)" onclick="resolveAndGo('#/6/3', 1, 1)">E: Tout est décrit via des fichiers de manifest</a></li>
 								<li><a href="#/6/1">F: Le monde se divise en deux catégories : ceux qui ont un pistolet chargé et ceux qui creusent. Toi, tu creuses. ⛏️</a></li>
 							</ul>
 						</p>
@@ -329,6 +343,7 @@
 						<a href="#/7">Aller à l'épreuve 3</a>
 						<aside class="notes">
 							C & E permet d’opérer l’infrastructure en modifiant le code versionné dans Git
+							(4 principes : déclaratif (E) )
 						</aside>
 					</section>
 					<section>
@@ -410,23 +425,53 @@
 							</ul>
 						</p>
 						<aside class="notes">
+							La solution GitOps utilisée doit récupérer les descripteurs de l'état désirer et les appliquer
 						</aside>
 					</section>
 					<section>
 						<h3>Fail 🎃</h3>
-						<a href="#/9">Aller au moment d'échange post meetup</a>
+						<a href="#/9">Aller à l'épreuve 5</a>
 						<aside class="notes">
 						</aside>
 					</section>
 					<section>
 						<h3>Win 💪</h3>
-						<a href="#/9">Aller au moment d'échange post meetup</a>
+						<a href="#/9">Aller à l'épreuve 5</a>
 						<aside class="notes">
 						</aside>
 					</section>
 				</section>
 
 				<!-- 9 -->
+				<section data-background-image="images/richardson-kubecon-2.png" data-background-size="60%">
+					<section>
+						<h3>Qu'est ce qui se passe si j'ai mis les doigts dans l'infrastructure ?</h3>
+						<p>
+							<ul>
+								<li><a href="#/9/1">A: <span class="shell">$ sudo bash -c "echo 'Ni vu ni connu...' && whoami && history -c" && history -c</span></a></li>
+								<li><a href="javascript:void(0)" onclick="resolveAndGo('#/9/2', 1, 1)">B: Le systeme essaillera de revenir à son état désiré</a></li>
+								<li><a href="#/9/1">C: Groot c'est pas moi, c'est lui 👉</a></li>
+							</ul>
+						</p>
+						<aside class="notes">
+							La solution GitOps utilisée doit récupérer les descripteurs de l'état désirer et les appliquer
+						</aside>
+					</section>
+					<section>
+						<h3>Fail 🎃</h3>
+						<a href="#/10">Aller au moment d'échange post meetup</a>
+						<aside class="notes">
+						</aside>
+					</section>
+					<section>
+						<h3>Win 💪</h3>
+						<a href="#/10">Aller au moment d'échange post meetup</a>
+						<aside class="notes">
+						</aside>
+					</section>
+				</section>
+
+				<!-- 10 -->
 				<section data-background-image="images/tavern.png" data-background-size="80%">
 					<section>
 						<h3>Au final GitOps c'est...</h3>
@@ -441,8 +486,8 @@
 						<p>Vous vous attablez avec Gimli, Legolas et si vous avez passé le niveau 1 vous avez droit à une 🍻.<br /></p>
 						<p>Vous leur demandez de l'aide pour mettre en place GitOps dans votre projet <br /></p>
 						<ul>
-							<li><a href="#/10">A: Legolas vous propose son arme favorite : Argo CD</a></li>
-							<li><a href="#/11">B: Alors que Gimli vous conseil d'utiliser votre forge pour faire votre arme sur mesure</a></li>
+							<li><a href="#/11">A: Legolas vous propose son arme favorite : Argo CD</a></li>
+							<li><a href="#/12">B: Alors que Gimli vous conseil d'utiliser votre forge pour faire votre arme sur mesure</a></li>
 						</ul>
 						<br />
 						<br />
@@ -455,7 +500,7 @@
 					</section>
 				</section>
 
-				<!-- 10 -->
+				<!-- 11 -->
 				<section>
 					<section>
 						<h3>Argo CD</h3>
@@ -480,7 +525,7 @@
 							<li>S'assurer que l'interface web est accessible au travers d'un Ingress</li>
 						</ul><br />
 						<br />
-						<a href="javascript:void(0)" onclick="resolveAndGo('#/12', 1, 3)">Après avoir résolu cette issue, passer à la prochaine</a>
+						<a href="javascript:void(0)" onclick="resolveAndGo('#/13', 1, 3)">Après avoir résolu cette issue, passer à la prochaine</a>
 
 						<aside class="notes">
 							Pour la démo tout sera fait en local et l'on aura un seul cluster kube qui hébergera Argo CD et les déployements
@@ -489,7 +534,7 @@
 					
 				</section>
 
-				<!-- 11 -->
+				<!-- 12 -->
 				<section>
 					<section>
 						<h3>Du "sur mesure" avec la CI de GitLab</h3>
@@ -506,7 +551,7 @@
 							<li>Permettre au runner de piloter le cluster k8s</li>
 						</ul><br />
 						<br />
-						<a href="javascript:void(0)" onclick="resolveAndGo('#/12', 1, 1)">Après avoir PARTIELEMENT cette issue, passer à la prochaine</a>
+						<a href="javascript:void(0)" onclick="resolveAndGo('#/13', 1, 1)">Après avoir PARTIELEMENT cette issue, passer à la prochaine</a>
 					
 						<aside class="notes">
 							Pour la démo tout sera fait en local et l'on aura un seul cluster kube qui hébergera GitLab et les déployements.
@@ -515,12 +560,12 @@
 					</section>
 				</section>
 
-				<!-- 12 -->
+				<!-- 13 -->
 				<section>
 					<section>
 						<h3>Déployer en production des descripteurs versionnés</h3>
 						<br />
-						Allons nous enfin pouvoir <a href="#/12/1">déployer la production à partir du repository git</a> ? 🤞
+						Allons nous enfin pouvoir <a href="#/13/1">déployer la production à partir du repository git</a> ? 🤞
 						<aside class="notes">
 							On va commencer avec un un simple manifest qui sera fournit
 						</aside>
@@ -530,7 +575,7 @@
 						<br />
 						L'équipe dev vous a fournit les manifests pour déployer l'Application dans la nouvelle infrastructure.<br />
 						<br />
-						<a href="javascript:void(0)" onclick="resolveAndGo('#/13', 1, 3)">Après avoir résolu cette issue, passer à la prochaine</a>
+						<a href="javascript:void(0)" onclick="resolveAndGo('#/14', 1, 3)">Après avoir résolu cette issue, passer à la prochaine</a>
 						
 						<aside class="notes">
 							
@@ -539,7 +584,7 @@
 
 				</section>
 
-				<!-- 13 -->
+				<!-- 14 -->
 				<section>
 					<section>
 						<h3>Et si on déployer d'autres environnements ?</h3>
@@ -549,13 +594,13 @@
 						<br />
 						On fait quoi pour les autres environnements ??
 						<br /><br />
-						<a href="#/13/1">Aller trouver l'inspiration à la taverne...</a>
+						<a href="#/14/1">Aller trouver l'inspiration à la taverne...</a>
 						<aside class="notes">
 							Non seulement ce serait bien mais ce serait indispensable, vous ne vous voyer pas gérer différent mode de deployement. <br/>
 							Mais cela pose pas mal de questions : comment gérer les différents env ? =>
 						</aside>
 					</section>
-					<!-- 13/1 -->
+					<!-- 14/1 -->
 					<section data-background-image="images/tavern.png" data-background-size="80%">
 						<h3>Quel modèle de configuration pour gérer nos différents environnements ?</h3>
 						<br />
@@ -563,8 +608,8 @@
 						<br />
 						<p>
 							<ul>
-								<li><a href="#/13/2">A: Kustomize, le guerrier Nain qui refuse le templating</a></li>
-								<li><a href="#/13/5">B: Helm, le démon du templating go</a></li>
+								<li><a href="#/14/2">A: Kustomize, le guerrier Nain qui refuse le templating</a></li>
+								<li><a href="#/14/5">B: Helm, le démon du templating go</a></li>
 							</ul>
 						</p>
 						<br />
@@ -575,7 +620,7 @@
 							A contrario, il y aussi le célèbre et démoniaque Helm qui a le templating qui fait partie de son âme, de son être.
 						</aside>
 					</section>
-					<!-- 13/2 -->
+					<!-- 14/2 -->
 					<section data-background-image="images/erebor.png" data-background-size="77%">
 						<h3>Kustomize</h3>
 						<br />
@@ -600,7 +645,7 @@
 							Les environnements sont representés par des dossiers dans overlays (mais on peut organiser cela autrement)
 						</aside>
 					</section>
-					<!-- 13/3 -->
+					<!-- 14/3 -->
 					<section data-background-image="images/erebor.png" data-background-size="77%">
 						<h3>Kustomize</h3>
 						<br />
@@ -637,24 +682,24 @@ patchesStrategicMerge:
 							La base et la notion de surcharge sous la forme de fichier(s) de patch sont pilotés par des fichiers <b>kustomize.yml</b>
 						</aside>
 					</section>
-					<!-- 13/4 -->
+					<!-- 14/4 -->
 					<section data-background-image="images/des.png" data-background-size="50%">
 						<h3>Les mains dans la camboui : Kustomize</h3>
 						<br />
-						<a href="javascript:void(0)" onclick="resolveAndGo('#/14', 1, 3)">Après avoir résolu cette issue, passer à la prochaine</a>
+						<a href="javascript:void(0)" onclick="resolveAndGo('#/15', 1, 3)">Après avoir résolu cette issue, passer à la prochaine</a>
 					</section>
-						<!-- 13/5 helm -->
+						<!-- 14/5 helm -->
 						<section data-background-image="images/balrog.png" data-background-size="77%">
-							<h3>Helm</h3>
+							<h3 style="color: red;">Helm</h3>
 							<br />
-							<q>The package manager for Kubernetes</q> (https://helm.sh/)<br />
+							<span><q>The package manager for Kubernetes</q> (https://helm.sh/)</span> <br />
 							
-							<span class="very-small">mais aussi <q>L'enfer est pavé de bonnes intentions</q> (Saint-Bernard)</span>
+							<span class="small red"><q>L'enfer est pavé de bonnes intentions</q> (Saint-Bernard)</span>
 							<br />
 							<p>
 							Helm, c'est à la fois un système de :<br />
 							<ul>
-								<li><a href="#/13/6">templating go pour yaml,</a></li> 
+								<li><a href="#/14/6">templating go pour yaml,</a></li> 
 								<li>un système de packaging et de partage d'applications kubernetes</li>
 								<li>et un système de gestion de dépendances pour les applications kube.</li>
 							</ul>
@@ -666,10 +711,10 @@ patchesStrategicMerge:
 								Mais c'est votre choix
 							</aside>
 						</section>
-						<!-- 13/6 -->
+						<!-- 14/6 -->
 						<section data-background-image="images/balrog.png" data-background-size="77%">
-							<h3>Helm create</h3>
-							Un <b>Chart helm</b> cela ressemble à quoi ?<br />
+							<h3 style="color: red;">Helm</h3>
+							Un <b>Chart <span class="red">helm</span></b> cela ressemble à quoi ?<br />
 							<pre>
 				├── charts
 				├── Chart.yaml
@@ -690,9 +735,9 @@ patchesStrategicMerge:
 								Ainsi qu'un fichier <b>values.yaml</b> avec les valeurs par défaut des templates.
 							</aside>
 						</section>
-						<!-- 13/7 -->
+						<!-- 14/7 -->
 						<section data-background-image="images/balrog.png" data-background-size="77%">
-							<h3>Helm</h3>
+							<h3 style="color: red;">H🔥lm</h3>
 							<pre>
 								<code data-line-numbers="2-4|29,30,34,36,37,40|44-46,53|78">
 									<script type="text/template">---
@@ -779,31 +824,31 @@ template:
 								</code>
 							</pre>
 							<aside class="notes">
-								La base et la notion de surcharge sous la forme de fichier(s) de patch sont pilotés par des fichiers
-								<b>kustomize.yml</b>
+								Les valeurs templétisés sont soient passées en args soit dans des fichiers
+								<b>values-....yml</b> (soit les 2)
 							</aside>
 						</section>
 
 
-						<!-- 13/8 -->
+						<!-- 14/8 -->
 						<section data-background-image="images/des.png" data-background-size="50%">
-							<h3>Les mains dans la camboui : Helm</h3>
+							<h3>Les mains dans la camboui : <span class="red">H🔥lm</span> </h3>
 							<br />
-							<a href="javascript:void(0)" onclick="resolveAndGo('#/14', 1, 5)">Après avoir résolu cette issue, passer à la prochaine</a>
+							<a href="javascript:void(0)" onclick="resolveAndGo('#/15', 1, 5)">Après avoir résolu cette issue, passer à la prochaine</a>
 							<aside class="notes">
 							</aside>
 						</section>
 					
 				</section>
 
-				<!-- 14 -->
+				<!-- 15 -->
 				<section>
 					<section data-background-image="images/secret.png" data-background-size="60%">
 						<h3>L'application présente des F🎃illes de sécurité</h3>
 						<br />
 						Entre autre, les secrets sont directement dans l'application.<br />
 						<br />
-						<a href="#/14/1">Demander à Gandalf s'il connaît un sort d'externalisation des mots de passe</a>
+						<a href="#/15/1">Demander à Gandalf s'il connaît un sort d'externalisation des mots de passe</a>
 						<aside class="notes">
 							Il n'y a pas que log4shell et spring4shell dans l'info...
 						</aside>
@@ -813,10 +858,10 @@ template:
 						Heureusement, Gandalf est là et vous donne plusieurs directions, choisissez bien...<br />
 						<br />
 						<ul>
-							<li><a href="#/14/2">A: Les "secrets" natifs de kube</a></li>
-							<li><a href="#/14/3">B: Le chiffrage dans Git avec bitnami sealed secrets</a></li>
-							<li><a href="#/14/4">C: La solution la plus avancée : Hashicorp Vault</a></li>
-							<li><a href="#/16">D: J'ai pas l'temps, pas l'choix faut y aller... 🏃</a></li>
+							<li><a href="#/15/2">A: Les "secrets" natifs de kube</a></li>
+							<li><a href="#/15/3">B: Le chiffrage dans Git avec bitnami sealed secrets</a></li>
+							<li><a href="#/15/4">C: La solution la plus avancée : Hashicorp Vault</a></li>
+							<li><a href="#/17">D: J'ai pas l'temps, pas l'choix faut y aller... 🏃</a></li>
 						</ul>
 						<aside class="notes">
 						</aside>
@@ -835,7 +880,7 @@ metadata:
 							</code>
 						</pre>
 						<br />
-						<a href="javascript:void(0)" onclick="resolveAndGo('#/15', 1, -2)">Après avoir résolu cette issue, passer à la prochaine</a>
+						<a href="javascript:void(0)" onclick="resolveAndGo('#/16', 0, -2)">Après avoir fait semblant de résoudre cette issue, passer à la prochaine</a>
 						<aside class="notes">
 							Mais bon, cela répond au premier besoin d'externalisation. Après si kustomize on peut utiliser un generator
 						</aside>
@@ -847,7 +892,7 @@ metadata:
 						<br />
 						<img src="images/crypto-asymetric-fr.png" />
 						<br />
-						<a href="javascript:void(0)" onclick="resolveAndGo('#/15', 1, 3)">Après avoir résolu cette issue, passer à la prochaine</a>
+						<a href="javascript:void(0)" onclick="resolveAndGo('#/16', 1, 3)">Après avoir résolu cette issue, passer à la prochaine</a>
 						<aside class="notes">
 							https://github.com/bitnami-labs/sealed-secrets
 						</aside>
@@ -874,7 +919,7 @@ metadata:
 							Même si c'est la meilleure solution, vous n'avez pas encore le niveau pour cette epic.<br />
 							Ce sera l'objet d'une autre aventure dont vous serez le héros...
 						</p>
-						<a href="#/14/1">revenir en arrière</a>
+						<a href="#/15/1">revenir en arrière</a>
 						<aside class="notes">
 							Quelque soit la solution choisit il faut bien évidement avoir Vault installé.
 							Mais pas le temps/level de mettre cela en place, retour à la case départ en ayant perdu un peu de temps
@@ -883,21 +928,21 @@ metadata:
 
 				</section>
 
-				<!-- 15 -->
+				<!-- 16 -->
 				<section data-background-image="images/des.png" data-background-size="50%">
 					<h3>Déployer la prod sur un tag au lieu de HEAD</h3>
 					<br />
 					Il s'agit de la dernière issue. Elle est optionnelle<br />
 					<br />
 					<ul>
-						<li><a href="#/16">J'ai pas l'temps, pas l'choix faut y aller... 🏃</a></li>
+						<li><a href="#/17">J'ai pas l'temps, pas l'choix faut y aller... 🏃</a></li>
 						<li><a href="javascript:void(0)" onclick="resolveAndGo('#/16', 1, 3)">Trop fort j'ai eu le temps de la résoudre</a></li>
 					</ul>
 					<aside class="notes">
 					</aside>
 				</section>
 
-				<!-- 16 -->
+				<!-- 17 -->
 				<section data-background-image="images/frodo-in-rivendell.png" data-background-size="70%">
 					<h3>Fin du premier tome</h3>
 					<br />
@@ -905,11 +950,11 @@ metadata:
 					<div id="final-score" class="score">Mais vous devriez recommencer car rien n'est en production</div>
 				</section>
 
-				<!-- 17 -->
+				<!-- 18 -->
 				<section>
 					<h3>FeedBack 🙏</h3>
 					<p>
-					<img src="images/TODO.png" style="vertical-align: middle;"/><span>   TODO </span>
+					<img src="images/openfeedback.png" style="vertical-align: middle;"/><span>   https://bit.ly/tz-gitops </span>
 					</p>
 					<h3>Références 📖</h3>
 					<ul>
