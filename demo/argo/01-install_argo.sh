@@ -44,7 +44,7 @@ echo "$NS_ARGO_EXIST"
 
 echo "🏗️ Installing Argo CD"
 set -x
-kubectl apply -n argocd -f 0-install-2.1.5.yml 
+kubectl apply -n argocd -f 0-install-2.3.4.yml 
 
 
 { set +x; } 2> /dev/null # silently disable xtrace

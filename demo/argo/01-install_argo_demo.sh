@@ -50,7 +50,7 @@ then
 fi
 
 prompt "🏗️ - Installing Argo CD"
-pe "kubectl apply -n argocd -f 0-install-2.1.5.yml"
+pe "kubectl apply -n argocd -f 0-install-2.3.4.yml"
 
 prompt "🕸️ - Exposing Argo CD dashboard"
 pe "kubectl apply -n argocd -f 1-ingress.yml"
