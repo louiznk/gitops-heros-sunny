@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: dhall-staging
+  namespace: argocd
+spec:
+  destination:
+    namespace: dhall-secret
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: 02-dhall
+    repoURL: 'https://github.com/louiznk/deploy-sith.git'
+    targetRevision: main
+    plugin:
+      env:
+        - name: DHALL_FILE
+          value: assembly-sealed.dhall
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

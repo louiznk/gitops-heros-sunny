@@ -1,19 +1,20 @@
 let issues = 0
 let storyPoints = 0
+let money = 10
 
 const labelContainer = document.getElementById("label-container")
 const labelLevel = document.getElementById("label-level")
 const finalScore = document.getElementById("final-score")
 
-function resolveAndGo(link, issuesResolved, difficulty) {
-    resolve(issuesResolved, difficulty)
+function resolveAndGo(link, issuesResolved, difficulty, coins = 0) {
+    resolve(issuesResolved, difficulty, coins)
     location.assign(link)
 }
-
-function resolve(issuesResolved, difficulty) {
+function resolve(issuesResolved, difficulty, coins = 0) {
     let lastLevel = getLevel(storyPoints)
     issues += issuesResolved
     storyPoints += difficulty
+    money += coins
 
     let newLevel = getLevel(storyPoints)
 
@@ -34,12 +35,11 @@ function resolve(issuesResolved, difficulty) {
             labelLevel.className = 'hide lvl-down';
         }, 2000);
     }
-    // TODO lvl down
 
-    labelContainer.innerHTML = `Level : ${newLevel} (issues : ${issues}, points : ${storyPoints})`
+    labelContainer.innerHTML = `Level: ${newLevel} (issues: ${issues}, points: ${storyPoints}), gold: ${money}`
     labelContainer.className = 'show header-inner';
 
-    finalScore.innerHTML = `Félicitation, vous avez résolue ${issues} issues et ${storyPoints} story points<br \>Vous finissez l'aventure avec le niveau ${newLevel}`
+    finalScore.innerHTML = `Félicitation, vous avez résolue ${issues} issues et ${storyPoints} story points<br />Vous finissez l'aventure avec le niveau ${newLevel} et ${money} pièces d'or`
 
 }
 
