@@ -1009,6 +1009,9 @@ spec:
 						<br />
 						<a href="javascript:void(0)" onclick="resolveAndGo('#/15', 1, 5, 5)">Après avoir résolu cette issue, passer à la prochaine</a>
 						<aside class="notes">
+							Argocd gère plusieurs systèmes de deploiement : yaml "vanilla", kustomize, helm, jsonnet, mais pas dhall. Mais l'on peut étendre argocd via un mécanisme de plugin, avec ce que l'on appel des CMP ou Config Management Plugin.  
+							Il y a deux manière de faire cela, dans notre cas nous allons utilisé un mécanisme de side car avec un container side car qui sera ajouté au pod "argo-repo-server".  
+							voir https://argo-cd.readthedocs.io/en/stable/user-guide/config-management-plugins/
 						</aside>
 					</section>
 				</section>

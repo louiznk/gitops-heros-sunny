@@ -35,9 +35,8 @@ else
 fi
 # --volume "$(pwd)/registries/k3s-config/registries.yaml:/etc/rancher/k3s/registries.yaml"
 echo "****************************************************************************************************"
-#echo "Create the cluster v1.16"
-# v0.8.1 (1.14) OK - v0.9.1 (1.15) KO - v0.10.0 (1.16) KO - v1.0.0 (1.16 avec localstorage, metricserver)??
 #--image rancher/k3s:v1.20.10-k3s1
+#--image "rancher/k3s:v1.21.11-k3s1" \
 mkdir -p "$HOME/srv/k3d/${clustername}"
 
 echo "🏗️ Creating the cluster"
@@ -50,7 +49,7 @@ k3d cluster create "${clustername}" --port "80:80@server[0]" --port "443:443@ser
 --k3s-agent-arg  '--kubelet-arg=eviction-hard=imagefs.available<1%,nodefs.available<1%' --k3s-agent-arg  '--kubelet-arg=eviction-minimum-reclaim=imagefs.available=1%,nodefs.available=1%' \
 --no-lb ${REGISTRY} \
 --volume "$HOME/srv/k3d/${clustername}/default:/opt/local-path-provisioner/default" \
---image "rancher/k3s:v1.21.11-k3s1" \
+--image "rancher/k3s:v1.22.9-k3s1" \
 --wait
 
 export KUBECONFIG="$(k3d kubeconfig merge ${clustername})"
