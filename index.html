@@ -111,6 +111,11 @@
 			.blue {
 				color: blue
 			}
+			.background-contrast {
+				background-color:  #e7ad52;
+				background-color:  grey;
+				opacity: .8;
+			}
 			.white {
 				color: white
 			}
@@ -138,9 +143,12 @@
 					Une collection Folio DevOps
 					<br />
 					<br />
+					
 					<p class="small">
-					Revue des lecteurs sur https://bit.ly/tz-gitops<!-- openfeedback -->
+					Revue des lecteurs sur https://github.com/louiznk/gitops-heros-sunny/issues
+					<!-- https://TODO_URL_FEEDBACK -->
 					</p>
+
 					<aside class="notes">
 						
 					</aside>
@@ -154,7 +162,7 @@
 								<td><img src="images/louis.png" class="img-rounded aligncenter avatar"/></td>
 							</tr>
 							<tr>
-								<td style="text-align: center;">Louis Tournayre @ Zenika Lyon &\<br />GDG Cloud & IoT Lyon</td>
+								<td style="text-align: center;">Louis Tournayre @ Zenika Lyon &<br />GDG Cloud & IoT Lyon</td>
 							</tr>
 						</tbody>
 					</table>
@@ -548,7 +556,7 @@
 						<ul>
 							<li>Installer et configurer un runner GitLab (pour le "groupe" gitlab) pour dans le cluster</li>
 							<li>S'assurer que le runner fonctionne</li>
-							<li>Permettre au runner de piloter le cluster k8s (via </li>
+							<li>Permettre au runner de piloter le cluster k8s</li>
 						</ul><br />
 						<br />
 						<a href="javascript:void(0)" onclick="resolveAndGo('#/13', 1, 1)">Après avoir PARTIELLEMENT cette issue, passer à la prochaine</a>
@@ -962,7 +970,7 @@ let svc =
   }
 in svc
 
--- ./assembly-staging-demo.dhall --
+-- ./assembly-demo.dhall --
 let configSvc = ./configs/staging-svc.dhall
 let templateSvc = ./templates/sith-svc-template.dhall
 
@@ -980,7 +988,7 @@ in templateSvc configSvc
 						<br />
 						Utilisation du template simple (un service)<br />
 						<pre>
-							<code> $ dhall-to-yaml --documents --file assembly-staging-demo.dhall 
+							<code> $ dhall-to-yaml --documents --file assembly-demo.dhall 
 
 ---
 apiVersion: v1
@@ -994,22 +1002,48 @@ spec:
     - port: 80
       targetPort: web
   selector:
-    app: hello
-							</code>
+    app: hello 				</code>
 						</pre>
 					</section>
 
 					<!-- 14/13 -->
-					<section data-background-image="images/des.png" data-background-size="50%">
-						<h3>Les mains dans la camboui : Dhall</h3>
+					<section data-background-image="images/Beorn_by_JMKilpatrick.png" data-background-size="40%">
+						<h3>Dhall-lang : comment déployer ?</h3>
 						<br />
-						Pour résoudre cette issue vous allez avoir besoin d'aide, invoquer l'aide d'un Béornide vous coutera de très nombreuses tournées <a href="javascript:void(0)" onclick="resolve(0, 0, -10)">[PAYEZ 10 🪙]</a>.<br />
+						Pour résoudre cette issue vous allez avoir besoin d'invoquer l'aide d'un consultant Béornide. <br />
+						<p>
+						Ce puissant guerrier :
+						<ul>
+							<li>Mettra en place les types, descripteurs et templates Dhall </li>
+							<li>Et intégrera Dhall dans votre solution de déployement</li>
+						</ul>
+						</p>
+						Cela vous coutera de très nombreuses tournées <a href="javascript:void(0)" onclick="resolveAndGo('#/14/14', 0, 0, -10)">[PAYEZ 10 🪙]</a>.<br />
 						<br />
 						Si vous ne les avez pas faites un <a href="#/14/1">autre choix</a><br /> 
 						<br />
+						<aside class="notes">
+							Argocd gère plusieurs systèmes de deploiement : yaml "vanilla", kustomize, helm, jsonnet, mais pas dhall. 
+						</aside>
+					</section>
+					<!-- 14/14 -->
+					<section data-background-image="images/des.png" data-background-size="50%">
+						<h3>Les mains dans la camboui : Trois tournées pour que ArgoCD intègre Dhall</h3>
+						<br />
+						ArgoCD ne comprends pas Dhall.... Mais notre amis Béornide peut lui "apprendre" en créant un CMP (Config Management Plugin). Cela consiste à :
+						<p>	
+						<ul>
+							<li>Installer le plugin via "side-car container" associé à argo-repo-server.</li>
+							<li>Configurer ce plugin pour qu'il traite les fichiers dhall</li>
+							<li>Configurer ArgoCD pour qu'il délègue les fichiers dhall à ce plugin</li>
+						</ul>
+						</p>
+						Après tout cela nous pourrons deployer les applications décrites en utilisant Dhall.<br /><br />
 						<a href="javascript:void(0)" onclick="resolveAndGo('#/15', 1, 5, 5)">Après avoir résolu cette issue, passer à la prochaine</a>
 						<aside class="notes">
-							Argocd gère plusieurs systèmes de deploiement : yaml "vanilla", kustomize, helm, jsonnet, mais pas dhall. Mais l'on peut étendre argocd via un mécanisme de plugin, avec ce que l'on appel des CMP ou Config Management Plugin.  
+							(Argocd gère plusieurs systèmes de deploiement : yaml "vanilla", kustomize, helm, jsonnet, mais pas dhall). 
+							
+							On peut étendre argocd via un mécanisme de plugin, avec ce que l'on appel des CMP ou Config Management Plugin.  
 							Il y a deux manière de faire cela, dans notre cas nous allons utilisé un mécanisme de side car avec un container side car qui sera ajouté au pod "argo-repo-server".  
 							voir https://argo-cd.readthedocs.io/en/stable/user-guide/config-management-plugins/
 						</aside>
@@ -1122,9 +1156,11 @@ metadata:
 				<section data-background-image="images/frodo-in-rivendell.png" data-background-size="70%">
 					<h3>Fin du premier tome</h3>
 					<br />
+					<span class="background-contrast">
 					Merci à vous 🤗<br />
+					</span>
 					<br />
-					<div id="final-score" class="score">Mais vous devriez recommencer car rien n'est en production</div>
+					<div id="final-score" class="score"><span class="background-contrast">vous devriez recommencer car rien n'est en production.</span></div>
 				</section>
 
 				<!-- 18 -->

@@ -39,7 +39,7 @@ function resolve(issuesResolved, difficulty, coins = 0) {
     labelContainer.innerHTML = `Level: ${newLevel} (issues: ${issues}, points: ${storyPoints}), gold: ${money}`
     labelContainer.className = 'show header-inner';
 
-    finalScore.innerHTML = `Félicitation, vous avez résolue ${issues} issues et ${storyPoints} story points<br />Vous finissez l'aventure avec le niveau ${newLevel} et ${money} pièces d'or`
+    finalScore.innerHTML = `<span class="background-contrast">Félicitation, vous avez résolue ${issues} issues et ${storyPoints} story points.<br />Vous finissez l'aventure avec le niveau ${newLevel} et ${money} pièces d'or.</span>`
 
 }
 
