@@ -16,7 +16,7 @@
 		<!-- Fixme mettre au centre le header -->
 		<style>
 			body, .reveal {
-				background-image: url(images/slide-background-znk.png);
+				background-image: url(images/slide-background-voxxed.png);
 				background-size: auto 100%;
 				background-repeat: no-repeat;
 			}
@@ -47,6 +47,14 @@
 			.header-inner {				
 				display: inline-block;
 				padding: 10px;
+			}
+			.footer {				
+				text-align: center;
+				font-size: 50%;
+				font-style: italic;
+				position:absolute;
+				right: 10px;
+				bottom: 10px;
 			}
 			.very-small {
 				font-size: 0.4em;
@@ -254,7 +262,7 @@
 						</aside>
 					</section>
 					<!-- 4.1 -->
-					<section data-background-image="images/tavern.png" data-background-size="80%">
+					<section data-background-image="images/tavern.png" data-background-size="75%">
 						<h3>La taverne</h3>
 						<br />
 						<p>
@@ -480,7 +488,7 @@
 				</section>
 
 				<!-- 10 -->
-				<section data-background-image="images/tavern.png" data-background-size="80%">
+				<section data-background-image="images/tavern.png" data-background-size="75%">
 					<section>
 						<h3>Au final GitOps c'est...</h3>
 						<img src="images/gitops-ring.png" /><br />
@@ -610,7 +618,7 @@
 						</aside>
 					</section>
 					<!-- 14/1 -->
-					<section data-background-image="images/tavern.png" data-background-size="80%">
+					<section data-background-image="images/tavern.png" data-background-size="75%">
 						<h3>Quel modèle de configuration pour gérer nos différents environnements ?</h3>
 						<br />
 						Après avoir offert plusieurs 🍺 au barde <a href="javascript:void(0)" onclick="resolve(0, 0, -2)">[PAYEZ 2 🪙]</a>, il vous propose de suivre la voie de :
@@ -1062,7 +1070,7 @@ spec:
 							Il n'y a pas que log4shell et spring4shell dans l'info...
 						</aside>
 					</section>
-					<section data-background-image="images/tavern.png" data-background-size="80%">
+					<section data-background-image="images/tavern.png" data-background-size="75%">
 						<h3>La voie du silence</h3>
 						Heureusement, Gandalf est là et vous donne plusieurs directions, choisissez bien...<br />
 						<br />
@@ -1180,6 +1188,9 @@ metadata:
 					</ul>
 				</section>
 			</div>
+			<div class="footer">
+				@_louidji
+			</div>
 		</div>
 
 		<script src="dist/reveal.js"></script>
@@ -1211,6 +1222,7 @@ metadata:
 				minScale: 0.2,
 				maxScale: 2.0,
 
+				controls: false,
 				// Slide number "speaker" : speaker view | "all"
 				progress: "all",
 				slideNumber: 'c/t',
