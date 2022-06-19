@@ -16,14 +16,16 @@ echo "> For mac"
 echo "brew install kubectl"
 
 unset REGISTRY CNI
-while getopts 'rch' opts
+while getopts 'rcph' opts
 do
   case $opts in
     r) REGISTRY="--volume $(pwd)/registries/k3s-config/registries.yaml:/etc/rancher/k3s/registries.yaml";;
     c) CNI="--k3s-server-arg --flannel-backend=none";;
-    h) echo "Help:"; echo "[-c] : option for calico as CNI"; echo "[-r] : option for define registries with $(pwd)/registries/k3s-config/registries.yaml"; echo "and last arg is the cluster name"; exit 2;;
+    p) PRELOAD=1;;
+    h) echo "Help:"; echo "[-c] : option for calico as CNI"; echo "[-r] : option for define registries with $(pwd)/registries/k3s-config/registries.yaml"; echo "[-p] : option for preloading docker images (great if network is low)"; echo "and last arg is the cluster name"; exit 2;;
   esac
 done
+
 
 shift $((OPTIND-1))
 
@@ -102,5 +104,13 @@ do
 done
 echo " ✅"
 echo "Traefik is ready, open http://localhost/dashboard/"
+
+
+if [ "x$PRELOAD" == "x1" ]; then
+  echo "⏳ Preload docker images"
+  ./offline/import.sh $clustername
+  echo " ✅"
+fi
+
 
 popd

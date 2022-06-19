@@ -520,14 +520,15 @@
 				<section>
 					<section>
 						<h3>Argo CD</h3>
-						<blockquote style="margin-top: 0; margin-bottom: 0; align-content: center;">
-							<p style="margin-top: 0">Argo CD is a declarative, GitOps continuous delivery tool for Kubernetes.</p>
-							<img src="images/argocd_architecture.png" style="margin-bottom: 0;"/>
+						<blockquote style="margin-top: -5; margin-bottom: 0; align-content: center;">
+							<span style="margin-top: 0; margin-bottom: 0; font-size: 0.6em;">Argo CD is a declarative, GitOps continuous delivery tool for Kubernetes.<br /></span>
+							<img src="images/argocd_architecture.png" style="margin-top: 0; margin-bottom: 0;"/>
 						</blockquote>
-						https://argoproj.github.io/cd
+						<span style="font-size: 0.6em; margin: 0;">https://argoproj.github.io/cd</span>
+						
 						<aside class="notes">
-						Donné à la CNCF depuis 2 ans, en status incubator<br />
-						Repos github avec environ 7.000 stars et 1700 forks<br />
+						Donné à la CNCF depuis 2 ansi (April 7, 2020), en status incubator https://www.cncf.io/projects/argo/<br />
+						Repos github avec environ 11.000 stars et 2300 forks<br />
 						En plus de Argo CD il y a plusieurs projets "Argo"=> Workflow : moteur de worflow; Rollout: deployement en blue-green,
 						canary, ...; Events : event driven workflow
 						</aside>
@@ -749,7 +750,7 @@ patchesStrategicMerge:
 				│   └── test-connection.yaml
 				├── values-prod.yaml
 				├── values-staging.yaml
-				└── values-sealed.yaml
+				└── values-....yaml
 				
 						</pre>
 						<aside class="notes">
@@ -891,21 +892,19 @@ template:
 						<pre>
 ├── assembly-prod.dhall
 ├── assembly-secret.dhall
-├── assembly-staging.dhall
+├── assembly-....dhall
 ├── configs
 │   ├── prod.dhall
-│   ├── secret.dhall
-│   └── staging.dhall
+│   ├── staging.dhall
+│   └── ....dhall
 ├── templates
 │   ├── sith-all-template.dhall
 │   ├── sith-deploy-template.dhall
 │   ├── sith-ingress-template.dhall
-│   ├── sith-sealed-secret.dhall
 │   └── sith-svc-template.dhall
 ├── tools
 │   └── converters.dhall
 └── types
-    ├── sealed-secret.dhall
     ├── sith-config-deploy.dhall
     ├── sith-config.dhall
     ├── sith-config-ingress.dhall
