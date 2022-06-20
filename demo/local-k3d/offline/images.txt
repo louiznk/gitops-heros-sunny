@@ -9,3 +9,7 @@ registry.gitlab.com/gitops-heros/sith:1.0
 registry.gitlab.com/gitops-heros/sith:1.1
 registry.gitlab.com/gitops-heros/sith:1.2
 registry.gitlab.com/gitops-heros/sith:2.0
+gitlab/gitlab-runner:alpine-v15.0.0
+registry.gitlab.com/gitlab-org/gitlab-runner/gitlab-runner-helper:x86_64-febb2a09
+louiznk/k8s-tools:1.0.0
+louiznk/k8s-tools:1.1.0

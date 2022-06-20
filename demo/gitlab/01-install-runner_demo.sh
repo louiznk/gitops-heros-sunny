@@ -11,8 +11,8 @@ clear
 if [ -z "$1" ]
 then
     echo "⚠️ - Pass the registration token as arg"
-    echo "🔗 - https://gitlab.com/groups/gitops-heros/-/settings/ci_cd"
-    flatpak run org.chromium.Chromium https://gitlab.com/groups/gitops-heros/-/settings/ci_cd 2> /dev/null &
+    echo "🔗 - https://gitlab.com/groups/gitops-heros/-/runners"
+    flatpak run org.chromium.Chromium https://gitlab.com/groups/gitops-heros/-/runners 2> /dev/null &
     exit 1
 fi
 
@@ -40,6 +40,6 @@ pe "helm install --create-namespace --namespace gitlab-runner gitlab-runner -f v
 popd
 
 echo "Go gitlab now and set variable KUBECONFIG_FILE"
-echo "🔗 - https://gitlab.com/groups/gitops-heros/-/settings/ci_cd"
+echo "🔗 - https://gitlab.com/groups/gitops-heros/-/runners"
 
-flatpak run org.chromium.Chromium https://gitlab.com/groups/gitops-heros/-/settings/ci_cd &> /dev/null
+flatpak run org.chromium.Chromium https://gitlab.com/groups/gitops-heros/-/runners &> /dev/null &

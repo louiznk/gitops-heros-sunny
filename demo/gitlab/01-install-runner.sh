@@ -9,8 +9,9 @@ pushd $DIR
 if [ -z "$1" ]
 then
     echo "⚠️ Pass the registration token as arg"
-    echo "🔗 https://gitlab.com/groups/gitops-heros/-/settings/ci_cd"
-    chromium https://gitlab.com/groups/gitops-heros/-/settings/ci_cd > /dev/null
+    echo "🔗 https://gitlab.com/groups/gitops-heros/-/runners"
+
+    flatpak run org.chromium.Chromium https://gitlab.com/groups/gitops-heros/-/runners  2> /dev/null &
     exit 1
 fi
 
@@ -41,6 +42,6 @@ helm install --create-namespace --namespace gitlab-runner gitlab-runner -f value
 popd
 
 echo "Go gitlab now"
-echo "🔗 https://gitlab.com/groups/gitops-heros/-/settings/ci_cd"
+echo "🔗 https://gitlab.com/groups/gitops-heros/-/runners"
 
-chromium https://gitlab.com/groups/gitops-heros/-/settings/ci_cd > /dev/null
+flatpak run org.chromium.Chromium https://gitlab.com/groups/gitops-heros/-/runners  2> /dev/null &
