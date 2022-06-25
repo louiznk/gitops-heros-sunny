@@ -7,7 +7,7 @@ window.onload = function () {
     const timer = document.getElementById("timer")
     let style = "header-inner"
     let lastStyle = style
-    var clock = setInterval(function () {
+    let clock = setInterval(function () {
         let now = new Date().getTime()
         let diff = end - now
 
@@ -17,9 +17,9 @@ window.onload = function () {
             sound='sounds/boat_horn.mp3'
             clearInterval(clock)
         } else {
-            var hours = Math.floor((diff % (1000 * 60 * 60 * 60)) / (1000 * 60 * 60));
-            var minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            var seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            let hours = Math.floor((diff % (1000 * 60 * 60 * 60)) / (1000 * 60 * 60));
+            let minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            let seconds = Math.floor((diff % (1000 * 60)) / 1000);
             if (diff < 5 * 1000 * 60) { // 5
                 style = "header-inner alerte"
                 sound='sounds/bell_gong.mp3'
@@ -32,7 +32,7 @@ window.onload = function () {
         if (style != lastStyle) {
             timer.className = style
             lastStyle = style            
-            var audio=new Audio(sound)
+            let audio=new Audio(sound)
             audio.play()
         }
     }, 1000);

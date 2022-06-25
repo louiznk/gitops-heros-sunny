@@ -39,6 +39,11 @@ function resolve(issuesResolved, difficulty, coins = 0) {
     labelContainer.innerHTML = `Level: ${newLevel} (issues: ${issues}, points: ${storyPoints}), gold: ${money}`
     labelContainer.className = 'show header-inner';
 
+    if (coins != 0) {
+        let audio=new Audio('sounds/gold.mp3')
+        audio.play()
+    }
+
     finalScore.innerHTML = `<span class="background-contrast">Félicitation, vous avez résolue ${issues} issues et ${storyPoints} story points.<br />Vous finissez l'aventure avec le niveau ${newLevel} et ${money} pièces d'or.</span>`
 
 }
