@@ -44,7 +44,7 @@ function resolve(issuesResolved, difficulty, coins = 0) {
         audio.play()
     }
 
-    finalScore.innerHTML = `<span class="background-contrast">Félicitation, vous avez résolue ${issues} issues et ${storyPoints} story points.<br />Vous finissez l'aventure avec le niveau ${newLevel} et ${money} pièces d'or.</span>`
+    finalScore.innerHTML = `<span class="background-contrast">Félicitation, vous avez résolu ${issues} issues et ${storyPoints} story points.<br />Vous finissez l'aventure avec le niveau ${newLevel} et ${money} pièces d'or.</span>`
 
 }
 
