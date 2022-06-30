@@ -3,7 +3,7 @@ function format(num) {
 }
 
 window.onload = function () {
-    const end = new Date().getTime() + ((45 * 1000 * 60) + 5000) // 45 min + 5s start time
+    const end = new Date().getTime() + ((50 * 1000 * 60) + 5000) // 45 min + 5s start time
     const timer = document.getElementById("timer")
     let style = "header-inner"
     let lastStyle = style
